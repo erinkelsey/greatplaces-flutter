@@ -24,6 +24,9 @@ class _ImageInputState extends State<ImageInput> {
       maxWidth: 600, // lower resolution -> app doesn't need hi-res
     );
 
+    // if user presses back -> no image taken, therefore don't save
+    if (imageFile == null) return;
+
     setState(() {
       _storedImage = File(imageFile.path);
     });
