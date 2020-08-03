@@ -10,6 +10,9 @@ void main() {
   runApp(MyApp());
 }
 
+/// Main entry point for app.
+///
+/// Manages the Theme and Routes for the pages.
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {

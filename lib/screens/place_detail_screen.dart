@@ -4,7 +4,10 @@ import 'package:provider/provider.dart';
 import '../providers/great_places.dart';
 import '../screens/map_screen.dart';
 
+/// Widget for building the screen containing the details
+/// of a [Place] object.
 class PlaceDetailScreen extends StatelessWidget {
+  /// Route name to navigate to this screen.
   static const routeName = '/place-detail';
 
   @override

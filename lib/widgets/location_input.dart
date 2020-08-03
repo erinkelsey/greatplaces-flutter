@@ -5,7 +5,9 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 import '../helpers/location.dart';
 import '../screens/map_screen.dart';
 
+/// Widget for handling the location input for a [Place] object to add.
 class LocationInput extends StatefulWidget {
+  /// Function to call when a place is selected.
   final Function onSelectPlace;
 
   LocationInput(this.onSelectPlace);
@@ -15,8 +17,11 @@ class LocationInput extends StatefulWidget {
 }
 
 class _LocationInputState extends State<LocationInput> {
+  /// Google Maps API URL for the current location image shown in preview.
   String _previewImageUrl;
 
+  /// Sets [_previewImageUrl] with current Google Maps API image for
+  /// [latitude] and [longitude].
   void _showPreview(double latitude, double longitude) {
     final staticMapImageUrl = LocationHelper.generateLocationPreviewImage(
         latitude: latitude, longitude: longitude);
@@ -25,6 +30,7 @@ class _LocationInputState extends State<LocationInput> {
     });
   }
 
+  /// Gets the user's current location, and shows it on the screen preview.
   Future<void> _getCurrentUserLocation() async {
     try {
       final locData = await Location().getLocation();
@@ -35,6 +41,7 @@ class _LocationInputState extends State<LocationInput> {
     }
   }
 
+  /// Function that is called when a user has selected a place on the map.
   Future<void> _selectOnMap() async {
     final LatLng selectedLocation = await Navigator.of(context).push<LatLng>(
       MaterialPageRoute(

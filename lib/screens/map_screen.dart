@@ -4,8 +4,15 @@ import 'package:great_places_app/models/place.dart';
 
 import '../models/place_location.dart';
 
+/// Widget for showing the full screen Google API Map that a user
+/// can either select a location, or view a location.
 class MapScreen extends StatefulWidget {
+  /// Is the initial location to add a marker to when the screen is
+  /// first shown.
   final PlaceLocation initialLocation;
+
+  /// Is true if user is selecting a location, else is false when
+  /// the user is viewing a previeously selected location.
   final bool isSelecting;
 
   MapScreen(
@@ -18,8 +25,11 @@ class MapScreen extends StatefulWidget {
 }
 
 class _MapScreenState extends State<MapScreen> {
+  /// The current selected location.
   LatLng _pickedLocation;
 
+  /// Called to set the state of [_pickedLocation] to the currently
+  /// picked location.
   void _selectLocation(LatLng position) {
     setState(() {
       _pickedLocation = position;

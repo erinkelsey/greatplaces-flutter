@@ -7,13 +7,18 @@ import '../models/place.dart';
 import '../helpers/db_helper.dart';
 import '../helpers/location.dart';
 
+/// Provider for managing the [Place] class.
 class GreatPlaces with ChangeNotifier {
+  /// All of the [Place] items on the device.
   List<Place> _items = [];
 
+  /// Returns a list of [Place] items on the device.
   List<Place> get items {
     return [..._items];
   }
 
+  /// Adds a [Place] item on the device, and stores the info
+  /// in the local SQLite DB.
   Future<void> addPlace(String pickedTitle, File pickedImage,
       PlaceLocation pickedLocation) async {
     final address = await LocationHelper.getPlaceAddress(
@@ -43,6 +48,8 @@ class GreatPlaces with ChangeNotifier {
     });
   }
 
+  /// Fetches and loads all of the [Place] items saved to this device
+  /// into memory, so able to display them.
   Future<void> fetchAndSetPlaces() async {
     final dataList = await DBHelper.getData('user_places');
     _items = dataList
@@ -64,6 +71,7 @@ class GreatPlaces with ChangeNotifier {
     notifyListeners();
   }
 
+  /// Returns the [Place] object with [id].
   Place findById(String id) {
     return _items.firstWhere((place) => place.id == id);
   }

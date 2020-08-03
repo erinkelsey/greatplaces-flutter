@@ -5,6 +5,8 @@ import './add_place_screen.dart';
 import '../providers/great_places.dart';
 import './place_detail_screen.dart';
 
+/// Widget for building the list of [Place] objects
+/// to display in a list.
 class PlacesListScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {

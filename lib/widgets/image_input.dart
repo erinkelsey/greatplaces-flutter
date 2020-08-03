@@ -5,7 +5,9 @@ import 'package:image_picker/image_picker.dart';
 import 'package:path/path.dart' as path;
 import 'package:path_provider/path_provider.dart' as syspath;
 
+/// Widget for handling the image input for [Place] to add.
 class ImageInput extends StatefulWidget {
+  /// Function to be called when an image is selected.
   final Function onSelectImage;
 
   ImageInput(this.onSelectImage);
@@ -15,8 +17,13 @@ class ImageInput extends StatefulWidget {
 }
 
 class _ImageInputState extends State<ImageInput> {
+  /// File object for the stored image that was taken by the camera.
   File _storedImage;
 
+  /// Opens up the camera on Android or iOS and waits until they take
+  /// a picture. Once they have taken a picture, save the image to the
+  /// local storage, show preview of image on add screen, by called
+  /// passed in function [widget.onSelectImage].
   Future<void> _takePicture() async {
     final _picker = ImagePicker();
     PickedFile imageFile = await _picker.getImage(

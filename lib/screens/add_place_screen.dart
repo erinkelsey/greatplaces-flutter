@@ -8,21 +8,36 @@ import '../widgets/location_input.dart';
 import '../providers/great_places.dart';
 import '../models/place_location.dart';
 
+/// Widget to build the screen where a user can add a [Place] object.
 class AddPlaceScreen extends StatefulWidget {
+  /// Route name for navigating to this screen.
   static const routeName = '/add-place';
   @override
   _AddPlaceScreenState createState() => _AddPlaceScreenState();
 }
 
 class _AddPlaceScreenState extends State<AddPlaceScreen> {
+  /// Controller for the title text input.
   final _titleController = TextEditingController();
+
+  /// The currently take image.
   File _pickedImage;
+
+  /// The currently picked location.
   PlaceLocation _pickedLocation;
 
+  /// Sets [pickedImage] to [_pickedImage]
   void _selectImage(File pickedImage) {
     _pickedImage = pickedImage;
   }
 
+  /// Saves the title, image, and location as a new [Place].
+  ///
+  /// Saves only if the title, picked image, and picked location
+  /// are not empty.
+  ///
+  /// Used the [GreatPlaces] provider to add save the new [Place]
+  /// object to local storage on device.
   void _savePlace() {
     if (_titleController.text.isEmpty ||
         _pickedImage == null ||
@@ -34,6 +49,8 @@ class _AddPlaceScreenState extends State<AddPlaceScreen> {
     Navigator.of(context).pop();
   }
 
+  /// Functon used to set the [_pickedLocation] to a [PlaceLocation] object
+  /// with [lat] and [lng] as coordinates.
   void _selectPlace(double lat, double lng) {
     _pickedLocation = PlaceLocation(latitude: lat, longitude: lng);
   }
