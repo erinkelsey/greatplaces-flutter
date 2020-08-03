@@ -4,7 +4,11 @@ A simple app for testing out the native device features using Flutter and Dart f
 
 ## Functionality
 
--
+- Add a new place with a photo.
+- Take a photo with the device camera.
+- Add a title for the photo/location.
+- Select either your current location, or pick your location from a map.
+- Places are saved on device, so that they are persistent after app restarts.
 
 ## Install and Setup
 
