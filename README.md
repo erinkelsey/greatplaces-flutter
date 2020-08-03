@@ -18,7 +18,13 @@ This implementation uses Google Maps API to generate Google Maps image of curren
 
 2. Go to the Google Maps service
 
-3. Enable Maps Static API
+3. Enable the following APIs:
+
+- Maps Static API
+- Places API
+- Maps SDK for Android
+- Maps SDK for iOS
+- Geocoding API
 
 4. Go to Credentials
 
@@ -57,7 +63,7 @@ Specify your API key in the application delegate ios/Runner/AppDelegate.swift:
 
 Run on a device (once it is connected):
 
-    $ flutter run --dart-define=GOOGLE_API_KEY=[YOUR_FIREBASE_WEB_API_KEY]
+    $ flutter run --dart-define=GOOGLE_API_KEY=[YOUR_GOOGLE_API_KEY]
 
 ## TODO
 
